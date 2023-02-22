@@ -1,0 +1,16 @@
+{
+    "name": "bairo/bienesraices",
+    "description": "proyecto pdo",
+    "type": "project",
+    "authors": [
+        {
+            "name": "bayron meneses idarraga"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "app\\":"./clases"
+        }
+    }
+}
