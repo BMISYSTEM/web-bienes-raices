@@ -40,7 +40,7 @@ class propiedad{
         $this->vendedores_id= $arg['vendedoresid'] ?? '';
     }
     //se encargara de guardar datos ya sanitizados 
-    public function guardar($bd)
+    public function guardar()
     {
         $zanitizar = $this->zanitizar();
         //convierte el arreglo en texto y se le coloca un separador para formar la cadena
@@ -52,7 +52,8 @@ class propiedad{
         $querys .= "');";
         // $resultado = mysqli_query($bd,$querys);
         // debugear($querys);
-        $result = self::$db->query($querys);  
+        $result = self::$db->query($querys); 
+         
     }
     //definicion de la base de datos
     public static function setdb($database){
@@ -85,26 +86,27 @@ class propiedad{
         if(!$this->titulo){
             self::$errores[] = "debes añadir un titulo";
         }
-        if(!$$this->precio){
+        if(!$this->precio){
             self::$errores[] = "debes añadir un precio";
         }
-        if(!$$this->wc){
+        if(!$this->wc){
             self::$errores[] = "debes añadir un numero de baños";
         }
-        if(!$$this->habitaciones){
+        if(!$this->habitaciones){
             self::$errores[] = "debes añadir un numero de habitaciones";
         }
-        if(!$$this->estacionamiento){
+        if(!$this->estacionamiento){
             self::$errores[] = "debes añadir un numero de estacionamientos";
         }
-        if(!$$this->descripcion){
+        if(!$this->descripcion){
             self::$errores[] = "debes añadir una descripcion";
         }
-        if(!$$this->vendedores_id){
+        if(!$this->vendedores_id){
             self::$errores[] = "debes colocar un vendedor";
         }
-        if(!$$this->imagenes){
+        if(!$this->imagenes){
             self::$errores[] = "La imagen es obligatoria";   
         }
+        return self::$errores;
     }
 }

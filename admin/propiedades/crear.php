@@ -27,9 +27,12 @@
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         //instanciamos el objecto propiedad
         $propiedad = new propiedad($_POST);
-        $propiedad ->guardar($nn);
+        //objecto de errores
+        $errores = $propiedad->validar();
         //insertar en la base de datos
         if(empty($errores) ){
+            //objecto de guardado 
+            $propiedad ->guardar();
             //creacion de carpeta
             $carpeta = '../../imagenes/';
             if(!is_dir($carpeta)){
