@@ -28,40 +28,13 @@
         //instanciamos el objecto propiedad
         $propiedad = new propiedad($_POST);
         $propiedad ->guardar($nn);
-        if(!$titulo){
-            $errores[] = "debes añadir un titulo";
-        }
-        if(!$precio){
-            $errores[] = "debes añadir un precio";
-        }
-        if(!$banos){
-            $errores[] = "debes añadir un numero de baños";
-        }
-        if(!$habitaciones){
-            $errores[] = "debes añadir un numero de habitaciones";
-        }
-        if(!$esta){
-            $errores[] = "debes añadir un numero de estacionamientos";
-        }
-        if(!$descripcion){
-            $errores[] = "debes añadir una descripcion";
-        }
-        if(!$vendedoresid){
-            $errores[] = "debes colocar un vendedor";
-         
-        }
-        if(!$imagenes){
-            $errores[] = "La imagen es obligatoria";
-            
-        }
         //insertar en la base de datos
         if(empty($errores) ){
-            //creacion de carpeta 
+            //creacion de carpeta
             $carpeta = '../../imagenes/';
             if(!is_dir($carpeta)){
                 mkdir($carpeta);                
             }
-
             //genera un nonbre unico
             $nombre_imagen = md5(uniqid(rand(),true));
             //asignar imagen en carpeta 
@@ -73,21 +46,14 @@
                 header('location: /admin?resultado=1');
             }
         }else{
-
         }
-        
-     
         // //echo $query;
         // if($resultado){
         //     // echo "Se inserto de manera correcta";
         // }
-
     }
     incluirtemplate('header');
-
-
 ?> 
-
 <main class="contenedor seccion">
     <h1>Crear</h1>
     <a class='boton boton-inline' href="/admin/" >volver</a>
@@ -123,23 +89,16 @@
             <select name="vendedoresid">
                 <option value="">Seleccione</option>
                 <?php while($vendedor = mysqli_fetch_assoc($resultado_consulta)):?>
-
                     <option  <?php echo  $vendedoresid === $vendedor['id'] ? 'selected' : '';?> 
                                 value="<?php echo $vendedor['id'];?>">
-                                    <?php echo $vendedor['nombre']." ". ['apellido'];?>
+                                <?php echo $vendedor['nombre']." ". ['apellido'];?>
                     </option>
-
-
                 <?php endwhile?>
- 
             </select>
         </fieldset>
-
         <input type="submit" class="boton-inline" value="Registrar">
     </form>
 </main>
-
 <?php
     incluirtemplate('footer');
-
 ?>  

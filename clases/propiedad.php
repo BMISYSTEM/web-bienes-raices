@@ -27,9 +27,7 @@ class propiedad{
     public $estacionamiento;
     public $creado;
     public $vendedores_id;
-
     public function __construct($arg = []){
-
         $this->id = $arg['id'] ?? '';
         $this->titulo = $arg['titulo'] ?? '';
         $this->precio = $arg['precio'] ?? '';
@@ -82,5 +80,31 @@ class propiedad{
     //Validaciones
     public static function getErrores(){
         return self::$errores; 
+    }
+    public function validar(){
+        if(!$this->titulo){
+            self::$errores[] = "debes añadir un titulo";
+        }
+        if(!$$this->precio){
+            self::$errores[] = "debes añadir un precio";
+        }
+        if(!$$this->wc){
+            self::$errores[] = "debes añadir un numero de baños";
+        }
+        if(!$$this->habitaciones){
+            self::$errores[] = "debes añadir un numero de habitaciones";
+        }
+        if(!$$this->estacionamiento){
+            self::$errores[] = "debes añadir un numero de estacionamientos";
+        }
+        if(!$$this->descripcion){
+            self::$errores[] = "debes añadir una descripcion";
+        }
+        if(!$$this->vendedores_id){
+            self::$errores[] = "debes colocar un vendedor";
+        }
+        if(!$$this->imagenes){
+            self::$errores[] = "La imagen es obligatoria";   
+        }
     }
 }
